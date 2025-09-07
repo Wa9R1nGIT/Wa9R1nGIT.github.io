@@ -30,8 +30,8 @@
 
         body {
             margin: 0;
-            font-family: system-ui, -apple-system, Segoe UI, Roboto, "Hiragino Sans", "Noto Sans JP", Arial, sans-serif;
-            background: linear-gradient(180deg, #0c0f14, #0f1115 40%, #0f1115);
+            font-family: system-ui,-apple-system,Segoe UI,Roboto,"Hiragino Sans","Noto Sans JP",Arial,sans-serif;
+            background: linear-gradient(180deg,#0c0f14,#0f1115 40%,#0f1115);
             color: var(--text);
         }
 
@@ -40,7 +40,7 @@
             top: 0;
             z-index: 10;
             backdrop-filter: saturate(180%) blur(10px);
-            background: linear-gradient(180deg, rgba(12,15,20,.9), rgba(12,15,20,.6));
+            background: linear-gradient(180deg,rgba(12,15,20,.9),rgba(12,15,20,.6));
             border-bottom: 1px solid var(--border);
         }
 
@@ -66,7 +66,7 @@
                 width: 14px;
                 height: 14px;
                 border-radius: 50%;
-                background: conic-gradient(from 0deg, var(--accent), var(--accent-2));
+                background: conic-gradient(from 0deg,var(--accent),var(--accent-2));
                 box-shadow: 0 0 20px rgba(124,156,255,.6);
             }
 
@@ -92,9 +92,9 @@
         }
 
             .hero h1 {
-                font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+                font-size: clamp(1.6rem,2.6vw,2.2rem);
                 margin: 8px 0;
-                background: linear-gradient(90deg, var(--text), #bcd0ff 40%, #d7c7ff 70%);
+                background: linear-gradient(90deg,var(--text),#bcd0ff 40%,#d7c7ff 70%);
                 -webkit-background-clip: text;
                 background-clip: text;
                 color: transparent;
@@ -111,11 +111,11 @@
             padding: 0 18px;
             display: grid;
             gap: 18px;
-            grid-template-columns: repeat( auto-fit, minmax(280px, 1fr) );
+            grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
         }
 
         .card {
-            background: linear-gradient(180deg, var(--panel), var(--panel-2));
+            background: linear-gradient(180deg,var(--panel),var(--panel-2));
             border: 1px solid var(--border);
             border-radius: var(--radius);
             overflow: hidden;
@@ -169,7 +169,7 @@
             padding: 12px 14px 16px
         }
 
-        button, .ghost {
+        button {
             appearance: none;
             border: none;
             cursor: pointer;
@@ -181,33 +181,10 @@
         }
 
         .primary {
-            background: linear-gradient(90deg, var(--accent), var(--accent-2));
+            background: linear-gradient(90deg,var(--accent),var(--accent-2));
             color: #0b0d12;
             border: 1px solid rgba(255,255,255,.12);
         }
-
-        .ghost {
-            background: transparent;
-            color: var(--text);
-            border: 1px solid var(--border);
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .player {
-            display: none;
-            border-top: 1px solid var(--border);
-            background: #0b0d12;
-        }
-
-            .player iframe {
-                width: 100%;
-                height: min(70vh, 720px);
-                border: 0;
-                background: #0b0d12;
-            }
 
         footer {
             max-width: var(--maxw);
@@ -220,14 +197,14 @@
         }
 
         .about, .contact {
-            background: linear-gradient(180deg, var(--panel), var(--panel-2));
+            background: linear-gradient(180deg,var(--panel),var(--panel-2));
             border: 1px solid var(--border);
             border-radius: var(--radius);
             padding: 16px;
         }
 
         .mono {
-            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            font-family: ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
             font-size: .9rem;
             color: #cbd5e1
         }
@@ -255,45 +232,37 @@
 
     <section class="hero" id="top">
         <h1>Unity WebGL 作品集</h1>
-        <p>ここでは Unity で制作したゲームをブラウザ上で直接遊べます。Playボタンで読み込み開始します。</p>
+        <p>ここでは Unity で制作したゲームをブラウザ上で直接遊べます。Play ボタンで新しいタブが開きます。</p>
     </section>
 
     <section class="grid" id="works">
         <!-- プロジェクト 1 -->
         <article class="card" data-project="rhythm">
-            <div class="thumb" style="background-image:url('thumbs/pinball.jpg');"></div>
+            <div class="thumb" style="background-image:url('thumbs/RhythmG.png');"></div>
             <div class="body">
                 <div class="title">Rhythm Game</div>
-                <p class="desc">画面上に丸いリングが出てくるのでそれにAIMを合わせてタイミングよくZkeyかXkeyを押してスコアを稼いでいくゲームです。</p>
+                <p class="desc">画面上に丸いリングが出てくるのでそれに AIM を合わせ、タイミングよく Z / X キーでスコアを稼ぐゲームです。</p>
                 <div class="tags">
                     <span class="tag">Unity</span><span class="tag">C#</span>
                 </div>
             </div>
             <div class="actions">
                 <button class="primary playBtn" data-src="RhythmGameWebGL/index.html">Play</button>
-                <a class="ghost" href="RhythmGameWebGL/index.html" target="_blank" rel="noopener">新しいタブで開く</a>
-            </div>
-            <div class="player">
-                <iframe title="Osu WebGL" loading="lazy" allowfullscreen referrerpolicy="no-referrer"></iframe>
             </div>
         </article>
 
         <!-- プロジェクト 2 -->
         <article class="card" data-project="escape">
-            <div class="thumb" style="background-image:url('thumbs/puzzle.jpg');"></div>
+            <div class="thumb" style="background-image:url('thumbs/EscapeG.png');"></div>
             <div class="body">
                 <div class="title">Escape Game</div>
-                <p class="desc">ドアが置かれた謎の部屋から脱出するゲームです。WASDkeyで前後左右に移動、インタラクトはEkeyです。</p>
+                <p class="desc">ドアが置かれた謎の部屋から脱出するゲーム。WASD で移動、E でインタラクト。</p>
                 <div class="tags">
                     <span class="tag">Unity</span><span class="tag">C#</span>
                 </div>
             </div>
             <div class="actions">
                 <button class="primary playBtn" data-src="EscapeGameWebGL/index.html">Play</button>
-                <a class="ghost" href="EscapeGameWebGL/index.html" target="_blank" rel="noopener">新しいタブで開く</a>
-            </div>
-            <div class="player">
-                <iframe title="EscapeGame WebGL" loading="lazy" allowfullscreen referrerpolicy="no-referrer"></iframe>
             </div>
         </article>
     </section>
@@ -301,13 +270,11 @@
     <section class="grid">
         <div class="about" id="about">
             <h2 style="margin:4px 0 10px">プロフィール</h2>
-            <p>東京デザインテクノロジーセンター専門学校 在学</p>
+            <p>東京デザインテクノロジーセンター専門学校 在学。</p>
         </div>
         <div class="contact" id="contact">
             <h2 style="margin:4px 0 10px">連絡先</h2>
-            <p>
-                <!-- 連絡先 -->
-            </p>
+            <p><!-- 連絡先 --></p>
         </div>
     </section>
 
@@ -316,26 +283,16 @@
     </footer>
 
     <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+        document.getElementById('year').textContent = new Date().getFullYear();
 
-    document.querySelectorAll('.playBtn').forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        const card = btn.closest('.card');
-        const player = card.querySelector('.player');
-        const iframe = player.querySelector('iframe');
-        const src = btn.getAttribute('data-src');
-
-        if(iframe.getAttribute('src')){
-          player.style.display = (player.style.display==='block')?'none':'block';
-          return;
-        }
-
-        btn.disabled = true; btn.textContent = 'Loading...';
-        iframe.onload = ()=>{ btn.textContent = 'Playing'; player.style.display='block'; };
-        iframe.onerror = ()=>{ btn.disabled=false; btn.textContent='Play'; alert('読み込みに失敗しました。パスを確認してください。'); };
-        iframe.setAttribute('src', src);
-      });
-    });
+        // Play → 新規タブで開く
+        document.querySelectorAll('.playBtn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const url = btn.getAttribute('data-src');
+                if (!url) return;
+                window.open(url, '_blank', 'noopener'); // 新しいタブで開く
+            });
+        });
     </script>
 </body>
 </html>
