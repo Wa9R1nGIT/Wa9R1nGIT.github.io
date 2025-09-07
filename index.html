@@ -1,13 +1,352 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
- <head>
-  <title>菅原慶太のポートフォリオになりえる場所</title>
- </head>
- <body>
-     <button onclick="location.href='./Game_2'">無限ランゲームスタートボタン</button>
-     <button onclick="location.href='./Game_3'">パズルゲームスタートボタン</button>
-     <p><img src="welcome.gif" alt="" /></p>
-     <h1></h1>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>菅原慶太のポートフォリオ</title>
+    <meta name="description" content="Unity 作品ポートフォリオ" />
+    <style>
+        :root {
+            --bg: #0f1115;
+            --panel: #171923;
+            --panel-2: #1e2230;
+            --text: #e5e7eb;
+            --muted: #9aa3b2;
+            --accent: #7c9cff;
+            --accent-2: #9f7aea;
+            --border: #2a2f3e;
+            --radius: 14px;
+            --shadow: 0 8px 30px rgba(0,0,0,.25);
+            --maxw: 1100px;
+        }
 
-     </footer>
- </body>
+        * {
+            box-sizing: border-box
+        }
+
+        html, body {
+            height: 100%
+        }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, "Hiragino Sans", "Noto Sans JP", Arial, sans-serif;
+            background: linear-gradient(180deg, #0c0f14, #0f1115 40%, #0f1115);
+            color: var(--text);
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            backdrop-filter: saturate(180%) blur(10px);
+            background: linear-gradient(180deg, rgba(12,15,20,.9), rgba(12,15,20,.6));
+            border-bottom: 1px solid var(--border);
+        }
+
+        .bar {
+            max-width: var(--maxw);
+            margin: auto;
+            padding: 14px 18px;
+            display: flex;
+            gap: 14px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            letter-spacing: .2px;
+        }
+
+            .brand .dot {
+                width: 14px;
+                height: 14px;
+                border-radius: 50%;
+                background: conic-gradient(from 0deg, var(--accent), var(--accent-2));
+                box-shadow: 0 0 20px rgba(124,156,255,.6);
+            }
+
+            .brand span {
+                font-size: 1.05rem
+            }
+
+        nav a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: .95rem;
+            margin-left: 16px
+        }
+
+            nav a:hover {
+                color: var(--text)
+            }
+
+        .hero {
+            max-width: var(--maxw);
+            margin: 24px auto 10px;
+            padding: 0 18px 6px;
+        }
+
+            .hero h1 {
+                font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+                margin: 8px 0;
+                background: linear-gradient(90deg, var(--text), #bcd0ff 40%, #d7c7ff 70%);
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+            }
+
+            .hero p {
+                margin: 6px 0 0;
+                color: var(--muted)
+            }
+
+        .grid {
+            max-width: var(--maxw);
+            margin: 20px auto 60px;
+            padding: 0 18px;
+            display: grid;
+            gap: 18px;
+            grid-template-columns: repeat( auto-fit, minmax(280px, 1fr) );
+        }
+
+        .card {
+            background: linear-gradient(180deg, var(--panel), var(--panel-2));
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            min-height: 240px;
+        }
+
+        .thumb {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #0b0d12 center/cover no-repeat;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .body {
+            padding: 14px 14px 6px
+        }
+
+        .title {
+            font-weight: 700;
+            margin: 4px 0 4px
+        }
+
+        .desc {
+            color: var(--muted);
+            font-size: .95rem;
+            line-height: 1.6
+        }
+
+        .tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 10px 0 6px
+        }
+
+        .tag {
+            border: 1px solid var(--border);
+            padding: 4px 8px;
+            border-radius: 999px;
+            font-size: .8rem;
+            color: #c6d3ff;
+            background: rgba(124,156,255,.08)
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            padding: 12px 14px 16px
+        }
+
+        button, .ghost {
+            appearance: none;
+            border: none;
+            cursor: pointer;
+            font-weight: 700;
+            letter-spacing: .2px;
+            padding: 10px 14px;
+            border-radius: 10px;
+            font-size: .95rem;
+        }
+
+        .primary {
+            background: linear-gradient(90deg, var(--accent), var(--accent-2));
+            color: #0b0d12;
+            border: 1px solid rgba(255,255,255,.12);
+        }
+
+        .ghost {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--border);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .player {
+            display: none; /* Playを押したら block */
+            border-top: 1px solid var(--border);
+            background: #0b0d12;
+        }
+
+            .player iframe {
+                width: 100%;
+                height: min(70vh, 720px);
+                border: 0;
+                background: #0b0d12;
+            }
+
+        footer {
+            max-width: var(--maxw);
+            margin: 10px auto 40px;
+            padding: 0 18px;
+            color: var(--muted);
+            font-size: .95rem;
+            display: grid;
+            gap: 12px;
+        }
+
+        .about, .contact {
+            background: linear-gradient(180deg, var(--panel), var(--panel-2));
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 16px;
+        }
+
+        .mono {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            font-size: .9rem;
+            color: #cbd5e1
+        }
+
+        .note {
+            font-size: .85rem;
+            color: #94a3b8
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="bar">
+            <div class="brand">
+                <div class="dot" aria-hidden="true"></div>
+                <span>菅原慶太のポートフォリオ</span>
+            </div>
+            <nav>
+                <a href="#works">作品</a>
+                <a href="#about">プロフィール</a>
+                <a href="#contact">連絡先</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="top">
+        <h1>Unity WebGL 作品集</h1>
+        <p>ここでは Unity で制作したゲームをブラウザ上で直接遊べます。「Play」ボタンで読み込み開始します。</p>
+    </section>
+
+    <section class="grid" id="works">
+        <!-- プロジェクト 1 のカード -->
+        <article class="card" data-project="escape">
+            <!-- 任意のサムネイル画像に差し替え -->
+            <div class="thumb" style="background-image:url('thumbs/pinball.jpg');"></div>
+            <div class="body">
+                <div class="title">Escape Game</div>
+                <p class="desc">謎の部屋からの脱出</p>
+                <div class="tags">
+                    <span class="tag">WebGL</span><span class="tag">UI</span><span class="tag">C#</span>
+                </div>
+            </div>
+            <div class="actions">
+                <!-- data-src に Unity 出力の index.html を指定 -->
+                <button class="primary playBtn" data-src="ShootingGame/index.html">Play</button>
+                <a class="ghost" href="Pinball/" target="_blank" rel="noopener">新しいタブで開く</a>
+            </div>
+            <div class="player">
+                <iframe title="Pinball WebGL" loading="lazy" allowfullscreen referrerpolicy="no-referrer"></iframe>
+            </div>
+        </article>
+
+        <!--  プロジェクト 2 のカード  -->
+        <article class="card" data-project="rhythm">
+            <div class="thumb" style="background-image:"></div>
+            <div class="body">
+                <div class="title"> </div>
+                <p class="desc"> </p>
+                <div class="tags">
+                    <span class="tag">Tilemap</span><span class="tag">Physics</span><span class="tag">2D</span>
+                </div>
+            </div>
+            <div class="actions">
+                <button class="primary playBtn" data-src="WafflePuzzle/index.html">Play</button>
+                <a class="ghost" href="WafflePuzzle/" target="_blank" rel="noopener">新しいタブで開く</a>
+            </div>
+            <div class="player">
+                <iframe title="Waffle Puzzle WebGL" loading="lazy" allowfullscreen referrerpolicy="no-referrer"></iframe>
+            </div>
+        </article>
+
+        <!--  以降、必要数コピペして data-src を差し替え  -->
+    </section>
+
+    <section class="grid">
+        <div class="about" id="about">
+            <h2 style="margin:4px 0 10px">プロフィール</h2>
+            <p>TECH.C. Tokyo 在学。Unity を中心に 2D/3D のプロトタイピング、UI 実装、タイルマップ制御、物理ギミックなどを制作。</p>
+            <p class="note">※ WebGL は端末スペックやブラウザ設定の影響を受けます。読み込みに時間がかかる場合があります。</p>
+        </div>
+        <div class="contact" id="contact">
+            <h2 style="margin:4px 0 10px">連絡先</h2>
+            <p>
+                GitHub / X / Mail などをここに。<br>
+                例：<a class="mono" href="https://github.com/yourname" target="_blank" rel="noopener">github.com/yourname</a>
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="note">© <span id="year"></span> わく りん</div>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        document.querySelectorAll('.playBtn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const card = btn.closest('.card');
+                const player = card.querySelector('.player');
+                const iframe = player.querySelector('iframe');
+                const src = btn.getAttribute('data-src');
+
+                // すでに読み込んでいる場合はトグル表示のみ
+                if (iframe.getAttribute('src')) {
+                    player.style.display = (player.style.display === 'block') ? 'none' : 'block';
+                    return;
+                }
+
+                // 読み込み中表示
+                btn.disabled = true; btn.textContent = 'Loading...';
+
+                // 読み込み
+                iframe.onload = () => { btn.textContent = 'Playing'; player.style.display = 'block'; };
+                iframe.onerror = () => { btn.disabled = false; btn.textContent = 'Play'; alert('読み込みに失敗しました。パスを確認してください。'); };
+
+                // Unity 出力の index.html
+                iframe.setAttribute('src', src);
+            });
+        });
+    </script>
+</body>
 </html>
